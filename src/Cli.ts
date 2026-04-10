@@ -11,12 +11,16 @@ async function cli() {
 
 	console.log("Enter the dice sequence to parse");
 	const request = await rl.question("> ");
-	main(request);
+	try {
+		main(request);
+	} catch (e) {
+		console.error("Error: " + (e as Error).message);
+	}
 	rl.close();
 }
 
 function main(request: string) {
-	console.log("Parsing", request);
+	console.log(`Parsing: '${request}'`);
 
 	const tokens = tokenize(request);
 	console.log(tokens.stringify());
