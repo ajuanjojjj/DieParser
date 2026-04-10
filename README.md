@@ -28,3 +28,7 @@ It must show all the intermediate results on top of the total.
 For example, that last input could generate an output like `5+(3+5)+2×((8+3)-2) = 31`
 
 If the input is invalid, your program must show a user-friendly error explaining what went wrong and where.
+
+## Artificial Intelligence disclosure
+All logic was implemented with no artificial intelligence.  
+AI (GitHub Copilot) was used to help in the generation of the tests (Both .spec.ts files)
