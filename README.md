@@ -12,9 +12,9 @@ Divisions must be available with both / and ÷.
 Multiplications must be available with x, × and *.
 
 ## Usage
-Releases can be found in the [releases section](/releases) of this repository.  
+Releases can be found in the [releases section](https://github.com/ajuanjojjj/DieParser/releases) of this repository.  
 You also can download the source code and run it with bun (`bun src/Cli.ts` or `bun src/Cli.ts <input>`), or install with any node package manager and run with npm/yarn/pnpm start.  
-Tests can be run with `npm/yarn/pnpm/bun run test`. These include a file for the [tokenizer](./src/util/Tokenizer.ts) and another for the [executor](./src/util/Executor.ts).  
+Tests can be run with `npm/yarn/pnpm/bun run test`. These include a file for the [tokenizer](./src/util/Tokenizer.ts) and another for the [executer](./src/util/Executer.ts).  
 
 ## Tips
 Make sure to respect order of operations.  
