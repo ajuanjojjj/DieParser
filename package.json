@@ -1,0 +1,15 @@
+{
+	"name": "dieparser",
+	"scripts": {
+		"start": "bun run src/Cli.ts",
+		"build": "bun build src/Cli.ts --target node --outdir dist",
+		"test": "vitest"
+	},
+	"dependencies": {
+		"bun": "latest"
+	},
+	"devDependencies": {
+		"@types/node": "latest",
+		"vitest": "^4.1.4"
+	}
+}
