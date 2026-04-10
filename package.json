@@ -1,5 +1,6 @@
 {
 	"name": "dieparser",
+	"version": "1.0.0",
 	"scripts": {
 		"start": "bun run src/Cli.ts",
 		"build": "bun build src/Cli.ts --target node --outdir dist",
