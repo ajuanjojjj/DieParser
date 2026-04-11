@@ -1,5 +1,7 @@
 # dieparser
 
+Versión en español en [README.es.md](./README.es.md)
+
 ## Requirements
 Write a fully-fledged dice parser.
 
