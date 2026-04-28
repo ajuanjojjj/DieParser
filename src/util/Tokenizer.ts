@@ -44,6 +44,7 @@ export function checkFinalResults(groupToken: GroupToken) {
 	let [lastToken, ...rest] = groupToken.tokens;
 
 	if (lastToken instanceof OperatorToken) throw new Error("Expression must start with a number or dice roll. Got " + lastToken.representation);
+	if (lastToken instanceof GroupToken) checkFinalResults(lastToken);
 
 
 	for (const token of rest) {
