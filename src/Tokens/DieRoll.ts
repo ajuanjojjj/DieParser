@@ -10,13 +10,13 @@ export class DieRollToken extends BaseToken {
 		const matches = /^(\d*)d(\d+)$/.exec(representation);
 		if (matches == null) throw new SyntaxError("Invalid DieRoll representation: " + representation);
 
-		const count = matches[1] == "" ? "1" : matches[1];
-		const sides = matches[2];
+		const count = matches[1] == "" ? 1 : parseInt(matches[1]!);
+		const sides = parseInt(matches[2]!);
 
-		if (sides == "0") throw new Error("Number of sides must be greater than 0.");
+		if (sides == 0) throw new Error("Number of sides must be greater than 0.");
 
-		this.sides = parseInt(sides!);
-		this.count = parseInt(count!);
+		this.sides = sides;
+		this.count = count;
 	}
 
 	public static parse(sentence: string, position: number): ParseResult {
