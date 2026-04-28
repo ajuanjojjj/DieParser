@@ -7,7 +7,7 @@ Write a fully-fledged dice parser.
 
 A dice throw uses the syntax nds where n is the number of throws and s the number of sides.  
 For instance, 1d20 gives a result between 1 and 20, 2d6 between 2 and 12, etc. ds is interpreted as 1ds.  
-A negative or null number of sizes must cause an error.
+A negative or null number of sides must cause an error.
 
 Arithmetic operations and parenthesis must be supported.  
 Divisions must be available with both / and ÷.  
