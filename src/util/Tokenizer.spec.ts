@@ -162,6 +162,10 @@ describe("6. Illogical Expressions Handling", () => {
 		const action = () => parse("");
 		expect(action).toThrow("No tokens found.");
 	});
+	test("Invalid syntax: Empty group", () => {
+		const action = () => parse("()");
+		expect(action).toThrow("Empty group at position 0.");
+	});
 	test("Invalid syntax: Multiple consecutive operators", () => {
 		const action = () => parse("10++10");
 		expect(action).toThrow("Expected a number or dice roll after '+' at position 3.");
@@ -176,6 +180,14 @@ describe("6. Illogical Expressions Handling", () => {
 	});
 	test("Invalid syntax: Ending with an operator", () => {
 		const action = () => parse("10+");
+		expect(action).toThrow("Expression cannot end with an operator.");
+	});
+	test("Invalid syntax: Group Starting with an operator", () => {
+		const action = () => parse("(+10)");
+		expect(action).toThrow("Expression must start with a number or dice roll.");
+	});
+	test("Invalid syntax: Group Ending with an operator", () => {
+		const action = () => parse("(10+)");
 		expect(action).toThrow("Expression cannot end with an operator.");
 	});
 });
