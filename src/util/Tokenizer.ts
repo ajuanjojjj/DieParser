@@ -20,7 +20,8 @@ export function tokenize(sentence: string): GroupToken {
 			i++;
 		} else if (groupEnd(currSentence)) {
 			const popped = groupsStack.pop();
-			if (popped == null) throw new Error(`Unexpected closing parenthesis at position ${i}.`);	//TODO Aqui interesaran cosas como posicion, etc
+			if (popped == null) throw new Error(`Unexpected closing parenthesis at position ${i}.`);
+			if (currentGroup.tokens.length == 0) throw new Error(`Empty group at position ${currentGroup.position}.`);
 			popped.push(currentGroup);
 			currentGroup = popped;
 			i++;
