@@ -1,4 +1,4 @@
-import type { NumberToken } from "../models/Tokens/NumberToken";
+import type { NumberToken } from "../Tokens/NumberToken";
 import { tryParse } from "../Tokens/Tokens";
 import { GroupToken } from "../Tokens/GroupToken";
 import { OperatorToken } from "../Tokens/Operator";
