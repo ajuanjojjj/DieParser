@@ -1,6 +1,4 @@
-import { GroupToken } from "../Tokens/GroupToken";
-
-export function execute(deepTokens: Token[]): number | Token[] {
+export function execute(deepTokens: BasicToken[]): number | BasicToken[] {
 	if ((deepTokens.length % 2) != 1) throw new Error("Odd number of tokens, cannot parse");
 
 	const flattened = [];
@@ -47,18 +45,11 @@ export function execute(deepTokens: Token[]): number | Token[] {
 	return value;
 }
 
-export function simplify(group: GroupToken) {
-	let simpler: Token[] = [];
-	for (const token of group.tokens) {
-		if (token instanceof GroupToken) simpler.push(simplify(token));
-		else simpler.push(token.value);
-	}
-	return simpler;
-}
-type Token = number | string | Token[];
+
+export type BasicToken = number | string | BasicToken[];
 
 
-export function stringifyTokens(tokens: Token[]): string {
+export function stringifyTokens(tokens: BasicToken[]): string {
 	return tokens.map(token => {
 		if (typeof token == "number") return token.toString();
 		if (typeof token == "string") return token;

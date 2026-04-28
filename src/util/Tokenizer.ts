@@ -1,7 +1,9 @@
 import type { NumberToken } from "../Tokens/NumberToken";
+import type { BasicToken } from "./Executer";
 import { tryParse } from "../Tokens/Tokens";
 import { GroupToken } from "../Tokens/GroupToken";
 import { OperatorToken } from "../Tokens/Operator";
+import { DieRollToken } from "../Tokens/DieRoll";
 
 export function tokenize(sentence: string): GroupToken {
 	if (sentence == "") throw new Error("No tokens found.");
@@ -67,6 +69,16 @@ export function parse(sentence: string) {
 	const tokens = tokenize(sentence);
 	checkFinalResults(tokens);
 	return tokens;
+}
+
+export function convertToBasic(group: GroupToken): BasicToken[] {
+	let simpler: BasicToken[] = [];
+	for (const token of group.tokens) {
+		if (token instanceof GroupToken) simpler.push(convertToBasic(token));
+		else if (token instanceof DieRollToken) simpler.push(token.rollDies());
+		else simpler.push(token.value);
+	}
+	return simpler;
 }
 
 function groupStart(sentence: string) {

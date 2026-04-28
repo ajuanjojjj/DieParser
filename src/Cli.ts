@@ -1,7 +1,7 @@
 import readline from 'node:readline/promises';
 import { stdin, stdout } from 'node:process';
-import { execute, simplify, stringifyTokens } from "./util/Executer";
-import { parse } from "./util/Tokenizer";
+import { execute, stringifyTokens } from "./util/Executer";
+import { parse, convertToBasic } from "./util/Tokenizer";
 
 async function cli() {
 	const rl = readline.createInterface({
@@ -22,7 +22,7 @@ function main(request: string) {
 		const tokens = parse(request);
 		console.log(tokens.stringify());
 
-		let result1 = simplify(tokens);
+		let result1 = convertToBasic(tokens);
 		console.log(stringifyTokens(result1));
 
 		let result = execute(result1);

@@ -121,12 +121,12 @@ describe("3. Whitespace & Formatting", () => {
 describe("4. Die Rolls", () => {
 	test("Multiple rolls of a single - sided die(always 1).", repeat(50, () => {
 		const token = parse("10d1").tokens[0] as DieRollToken;
-		expect(token.value).toBe(10);
+		expect(token.rollValue()).toBe(10);
 	}));
 	test("High face count and multiple dice.", repeat(50, () => {
 		const token = parse("5d100").tokens[0] as DieRollToken;
-		expect(token.value).toBeGreaterThan(5);
-		expect(token.value).toBeLessThan(500);
+		expect(token.rollValue()).toBeGreaterThan(5);
+		expect(token.rollValue()).toBeLessThan(500);
 	}));
 });
 

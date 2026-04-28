@@ -29,11 +29,25 @@ export class DieRollToken extends BaseToken {
 		};
 	}
 
-	public get value() {
-		let total = 0;
-		for (let i = 0; i < this.count; i++) {
-			total += Math.floor(Math.random() * this.sides) + 1;
+	public rollDies() {
+		const dies = new Array();
+		dies.push(this.rollSingleDie());
+		for (let i = 1; i < this.count; i++) {
+			dies.push("+");
+			dies.push(this.rollSingleDie());
 		}
-		return total;
+		return dies;
+	}
+
+	public rollValue() {
+		let value = this.rollSingleDie();
+		for (let i = 1; i < this.count; i++) {
+			value += this.rollSingleDie();
+		}
+		return value;
+	}
+
+	private rollSingleDie() {
+		return Math.floor(Math.random() * this.sides) + 1;
 	}
 }
