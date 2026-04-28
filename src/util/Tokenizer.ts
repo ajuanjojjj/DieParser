@@ -40,8 +40,9 @@ export function tokenize(sentence: string): GroupToken {
 	return tokens;
 }
 
-export function checkFinalResults(tokens: GroupToken) {
-	let [lastToken, ...rest] = tokens.tokens;
+export function checkFinalResults(groupToken: GroupToken) {
+	let [lastToken, ...rest] = groupToken.tokens;
+
 	if (lastToken instanceof OperatorToken) throw new Error("Expression must start with a number or dice roll. Got " + lastToken.representation);
 
 
