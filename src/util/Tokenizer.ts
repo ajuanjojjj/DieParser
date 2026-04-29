@@ -6,8 +6,6 @@ import { OperatorToken } from "../Tokens/Operator";
 import { DieRollToken } from "../Tokens/DieRoll";
 
 export function tokenize(sentence: string): GroupToken {
-	if (sentence == "") throw new Error("No tokens found.");
-
 	const tokens = new GroupToken(sentence, 0);
 	let currentGroup = tokens;
 	let groupsStack: GroupToken[] = [];
@@ -37,8 +35,11 @@ export function tokenize(sentence: string): GroupToken {
 			i += token.tokenLength;
 		}
 	}
+
 	const unclosed = groupsStack.pop();
 	if (unclosed != null) throw new Error(`Unclosed parenthesis at position ${unclosed.position}.`);
+	if (tokens.tokens.length == 0) throw new Error("No tokens found.");
+
 	return tokens;
 }
 
